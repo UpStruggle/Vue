@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 指令3之show</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">点击累加</button>
+        <img src="images/pic1.jpg" alt="" v-show="isShow" @click="changeIsShow">
+        <!--isShow值为true时显示图片-->
+        <img src="images/pic1.jpg" alt="" v-show="age>=18">
+        <!--age大于等于18时显示图片-->
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isShow: true,
+                age: 1
+            },
+            methods: {
+                changeIsShow: function() {
+                    this.isShow = !this.isShow;
+                },
+                add: function() {
+                    this.age++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

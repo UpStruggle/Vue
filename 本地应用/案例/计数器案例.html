@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .input-num {
+            margin-top: 100px;
+            margin-left: 40%;
+        }
+        
+        button {
+            width: 100px;
+            height: 50px;
+            background-color: darkgrey;
+            border: transparent;
+            text-align: center;
+            color: rgb(117, 8, 8);
+            font-size: large;
+        }
+        
+        #button-left {
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        
+        #button-right {
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        
+        span {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            margin: 0 -5px;
+            background-color: wheat;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="input-num">
+            <button id="button-left" @click="sub">-</button>
+            <span>{{num}}</span>
+            <button id="button-right" @click="add">+</button>
+        </div>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function() {
+                    this.num >= 10 ? alert('超出') : this.num++;
+                },
+                sub: function() {
+                    this.num <= 0 ? alert('不能减少啦') : this.num--;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

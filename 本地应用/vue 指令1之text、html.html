@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 指令1</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-text="message+'!'">好的</h2>
+        <!--结果为：yangdandan！-->
+        <h2>{{message+'!'}}好的</h2>
+        <!--结果为：yangdandan好的！-->
+        <h2 v-text="info"></h2>
+        <!--结果为：元气满满-->
+        <p v-html="content1"></p>
+        <!--结果为：努力啊-->
+        <p v-text="content1"></p>
+        <!--结果为：努力啊-->
+        <p v-html="content2"></p>
+        <!--结果为：一个链接（可点击）-->
+        <p v-text="content2"></p>
+        <!--结果为：网址（文本形式）-->
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'yangdandan',
+                info: '元气满满',
+                content1: '努力啊',
+                content2: "<a href='https://www.baidu.com/'>百度一下</a>"
+            }
+        })
+    </script>
+</body>
+
+</html>

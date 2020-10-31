@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 指令4之 if</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="切换显示" @click="toggleIsShow">
+        <p v-if="isShow">yangdandan</p>
+        <!--v-if直接把元素从dom树移除-->
+        <p v-show="isShow">yangdandan v-show</p>
+        <!--v-show设置元素的样式为 display:none-->
+        <h2 v-if="temperature>=35">有点热</h2>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: false,
+                temperature: 40,
+            },
+            methods: {
+                toggleIsShow: function() {
+                    this.isShow = !this.isShow;
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

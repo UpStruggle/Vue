@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 指令6之 for</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <input type="button" value="删除数据" @click="remove">
+        <ul>
+            <li v-for="item in arr" :title="item">
+                yangdandan:{{item+1}}
+                <!-- ‘yangdandan’遍历四次，并分别在后面加上arr数组里面的内容 -->
+            </li>
+            <li v-for="(item,index) in arr" :title="item">
+                {{index}}yangdandan:{{item}}
+                <!-- 遍历出arr数组里面的内容，并在前面加上索引号 -->
+            </li>
+        </ul>
+        <h2 v-for="(item,index) in objArr" v-bind:title="item.name">
+            {{index+1}} ： {{item.name}}
+            <!-- 遍历出 obj对象中的name属性值 -->
+        </h2>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                arr: ["北京", "上海", "广州", "深圳"],
+                objArr: [{
+                    name: "jack"
+                }, {
+                    name: "rose"
+                }]
+            },
+            methods: {
+                add: function() {
+                    this.objArr.push({
+                        name: "Tom"
+                    });
+                },
+                remove: function() {
+                    this.objArr.shift();
+                    // 默认移除最上面的数据
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

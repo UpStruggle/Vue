@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换案例</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+
+<body>
+    <div id="mask">
+        <div class="center">
+            <h2 class="title">
+                奔跑吧少年
+            </h2>
+            <!-- 导航条上的图片 -->
+            <img id='nav' src="images/nav.jpg" alt="">
+            <!-- 图片切换主体 -->
+            <img id='pic' :src="imgArr[index]" alt="">
+            <!-- 左箭头 -->
+            <a href="javascript:;" class="left" @click="prev" v-show="index!=0">&lt;</a>
+            <!-- 右箭头 -->
+            <a href="javascript:;" class="right" @click="next" v-show="index<imgArr.length-1">&gt;</a>
+        </div>
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#mask",
+            data: {
+                imgArr: ["images/pic1.jpg", "images/pic2.jpg", "images/pic3.jpg", "images/pic4.jpg", "images/pic5.jpg", ],
+                index: 0,
+            },
+            methods: {
+                prev: function() {
+                    this.index--;
+                },
+                next: function() {
+                    this.index++;
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
