@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="css/音乐播放器.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- 播放器主体 -->
+        <div class="play_wrap .clearfix" id="player">
+            <div class="header">
+                <span>listen music</span>
+                <input type="text" name="" id="" value="" v-model="query" @keyup.enter="searchMusic">
+                <img class="search_icon" src="images/search.png" />
+            </div>
+            <div class="left">
+                <ul class="music_list">
+                    <li v-for="item in musicList">
+                        <img class="music_icon" @click="playMusic(item.id)" src="images/music_play.png" alt="">
+                        <span class="music_name">{{ item.name }}</span>
+                        <img class="video_icon" @click="playMV(item.mvid)" v-if="item.mvid!=0" src="images/video_play.png" alt="">
+                        <span class="music_mask">{{item.name}}</span>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="middle">
+                <div class="play_con" :class="{playing:isPlaying}">
+                    <img src="images/play-bar.png" class="play_bar " />
+                    <div class="cover_background autoRotate"></div>
+                    <img v-bind:src="musicCover==''?'images/nav.jpg':musicCover" alt="" class="music_cover autoRotate">
+                </div>
+                <!-- <div class="playing-title ">
+                    <h4>正在播放</h4>
+                    <h3 v-bind:text="musicList"></h3>
+                </div> -->
+            </div>
+            <div class="right">
+                <div class="comments_title">热门留言</div>
+                <dl class="comment-list">
+                    <dd v-for="item in hotComments">
+                        <img class="commenterpic" v-bind:src="item.user.avatarUrl" alt=" ">
+                        <div class="username">{{item.user.nickname}}</div>
+                        <div class="commentCon">{{item.content}}</div>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="control clearfix ">
+                <audio @play="play" @pause="pause" v-bind:src="musicUrl " autoplay controls loop></audio>
+            </div>
+            <div class="video_con" v-show="isShow">
+                <video ref='video' :src="mvUrl" controls="controls" autoplay="autoplay"></video>
+                <div class="mask" @click="hide"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!--vue 引入  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js "></script>
+    <!-- axios 引入 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
+    <!-- 引入自己的js文件 -->
+    <script src="js/音乐播放器.js "></script>
+</body>
+
+</html>
