@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data 数据</title>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <!-- 获取对象中的某个值 -->
+        <h2>{{school.name}}</h2>
+        <!-- 获取数组中的某个值 -->
+        <ul>
+            <li>{{city[0]}}</li>
+            <li>{{city[1]}}</li>
+        </ul>
+
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "yangdandan",
+                school: {
+                    name: 'AHUT',
+                    mobile: 123456,
+                },
+                city: ['anhui', 'maanshan']
+            }
+        })
+    </script>
+</body>
+
+</html>
